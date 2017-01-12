@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 class CreatePost extends Component{
     render(){
         return(
-          <div className="CreatePost"> </div>
+          <div className="CreatePost">Post form</div>
         )
     }
 }
