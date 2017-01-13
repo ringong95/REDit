@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Post from './../../components/Post'
 import { data } from './../../mock-data'
 import FlatButton from 'material-ui/FlatButton';
+import styles from "./styles.css"
 
 
 // for css make an object with the css in it and just add to where you need it.
@@ -18,7 +19,7 @@ class PostList extends Component {
         // 
     }
     sortPopular(){
-        const descending = (this.state.posts.sort((a, b) => parseInt(b.votes) - parseInt(a.votes)));
+        const descending = (this.state.posts.sort((a, b) => b.votes - a.votes));
         this.setState({ posts: descending,
                         orderBy: "popular"
         })
@@ -43,7 +44,7 @@ class PostList extends Component {
     render() {
         return (
             <div>
-            <div className="postListbar"> 
+            <div className={styles.postListbar}> 
             <h2> Posts </h2>
             <div className="sorting"> 
                  <FlatButton onClick={this.sortPopular} label={"Popular"} />
