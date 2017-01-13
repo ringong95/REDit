@@ -5,6 +5,7 @@ class Welcome extends Component {
     return (
       <div className="Welcome"> 
      
+      <h1> Hello World </h1>
         
       </div>
     );

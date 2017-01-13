@@ -19,4 +19,12 @@ const Post = ( ({ author, votes = 0, categories, title, description, link, updat
        </Card>  
     )
 })
+Post.propTypes = {
+    author: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    categories: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired
+}
 export default Post;
