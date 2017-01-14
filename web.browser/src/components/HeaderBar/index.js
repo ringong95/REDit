@@ -6,10 +6,12 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 const HeaderBar = (()=>{
+  const headerstyle = {
+    position: "fixed"
+  }
   return(
-      <AppBar
+      <AppBar style={headerstyle}
     title={<span style={styles.title}>Title</span>}
-   
     iconElementLeft={<IconButton><NavigationClose /></IconButton>}
     iconElementRight={
       <div>
