@@ -1,85 +1,81 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Post from './../../components/Post'
 import PostList from './PostList'
 import { data } from './../../mock-data'
 
 // for css make an object with the css in it and just add to where you need it.
 class PostListContainer extends Component {
-    constructor() {
-        super();
-        this.state = {
-            posts: data.posts,
-            orderBy: "",
-        }
-        this.updateVote = this.updateVote.bind(this);
-        this.sortPopular = this.sortPopular.bind(this);
-        this.sortNewest = this.sortNewest.bind(this);
-        
-        // 
-    }
-    getPosts() {
-        const retrievedPosts = data.posts;
-        const sortPosts = this.sortNewest(retrievedPosts)
-        this.setState({ posts: sortPosts });
-    }
-    componentdidMount() {
-        this.getPosts();
-    }
+  constructor() {
+    super();
+    this.state = {
+      posts: data.posts,
+      orderBy: '',
+    };
+    this.updateVote = this.updateVote.bind(this);
+    this.sortPopular = this.sortPopular.bind(this);
+    this.sortNewest = this.sortNewest.bind(this);
+  }
+  getPosts() {
+    const retrievedPosts = data.posts;
+    const sortPosts = this.sortNewest(retrievedPosts);
+    this.setState({ posts: sortPosts });
+  }
+  componentdidMount() {
+    this.getPosts();
+  }
 
-    sortPopular() {
-        const descending = (this.state.posts.sort((a, b) => b.votes - a.votes));
-        this.setState({
-            posts: descending,
-            orderBy: "popular"
-        })
-    }
-    sortNewest() {
-        const ascending = (this.state.posts.sort((a, b) => parseInt(a.id) - parseInt(b.id)));
-        this.setState({
-            posts: ascending,
-            orderBy: "newest"
-        })
-    }
-    updateVote(post) {
+  sortPopular() {
+    const descending = (this.state.posts.sort((a, b) => b.votes - a.votes));
+    this.setState({
+      posts: descending,
+      orderBy: 'popular',
+    })
+  }
+  sortNewest() {
+    const ascending = (this.state.posts.sort((a, b) => parseInt(a.id) - parseInt(b.id)));
+    this.setState({
+      posts: ascending,
+      orderBy: 'newest',
+    })
+  }
+  updateVote(post) {
 
-        const newposts = this.state.posts.map(((datapost) => {
-            if (datapost.id === post.id) {
-                datapost.votes += 1
-                // console.log("this")
-            }
-            return datapost
-        }))
-        this.setState({ post: newposts })
-    }
-    componentWillReceiveProps(nextProps) {
+    const newposts = this.state.posts.map(((datapost) => {
+      if (datapost.id === post.id) {
+        datapost.votes += 1
+      }
+      return datapost;
+    }))
+    this.setState({ post: newposts })
+  }
+  componentWillReceiveProps(nextProps) {
 
-        if (nextProps.location.query.sort != this.props.location.query.sort) {
-
-            switch (nextProps.location.query.sort) {
-                case "newest":
-                    this.sortNewest()
-                    this.setState({ orderBy: "newest" })
-                    break
-                case "popular":
-                    this.sortPopular()
-                    this.setState({ orderBy: "popular" })
-                    break
-                default:
-                    return null;
-            }
-        }
+    if (nextProps.location.query.sort !== this.props.location.query.sort) {
+      switch (nextProps.location.query.sort) {
+        case 'newest':
+          this.sortNewest();
+          this.setState({ orderBy: 'newest' });
+          break;
+        case 'popular':
+          this.sortPopular()
+          this.setState({ orderBy: 'popular' });
+          break;
+        default:
+          return null;
+      }
     }
-    render() {
-        return (
-            <PostList
-                updateVote={this.updateVote}
-                sortNewest={this.sortNewest}
-                sortPopular={this.sortPopular}
-                orderBy={this.state.orderBy}
-                posts={this.state.posts}
-                />
-        )
-    }
+  }
+  render() {
+    return (
+      <PostList
+        updateVote={this.updateVote}
+        sortNewest={this.sortNewest}
+        sortPopular={this.sortPopular}
+        orderBy={this.state.orderBy}
+        posts={this.state.posts}
+        />
+    )
+  }
 }
 
 export default PostListContainer;

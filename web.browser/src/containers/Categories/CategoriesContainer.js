@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Week from './../../components/Week'
 import Categories from './Categories'
 

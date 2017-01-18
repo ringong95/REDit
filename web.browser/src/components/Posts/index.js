@@ -24,4 +24,5 @@ const Posts = ({ posts, updateVote }) => {
         </div>
     )
 }
+
 export default Posts

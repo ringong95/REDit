@@ -3,6 +3,8 @@ import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import styles from './styles.css'
+import store from './../../store/createStore'
+import { voteUp } from './../../reducers/postsreducer'
 
 // Card flatbutton and chips
 const Post = ( ({ author, votes = 0, categories, title, description, link, updateVote  } )=>{

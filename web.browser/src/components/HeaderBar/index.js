@@ -11,7 +11,7 @@ const HeaderBar = (()=>{
   }
   return(
       <AppBar style={headerstyle}
-    title={<span style={styles.title}>Title</span>}
+    title={<span style={styles.title}>Redit</span>}
     iconElementLeft={<IconButton><NavigationClose /></IconButton>}
     iconElementRight={
       <div>

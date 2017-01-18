@@ -4,23 +4,24 @@ import styles from "./styles.css"
 import PostToolbar from './../../components/PostToolbar'
 import Posts from './../../components/Posts'
 const PostList = (({updateVote, sortNewest, sortPopular, orderBy, posts}) => {
-    return (
-        <div>
-            <PostToolbar
-                sortPopular={sortPopular}
-                sortNewest={sortNewest}
-                orderBy={orderBy} />
-            <div className="PostList ">
-                <Posts posts={posts} updateVote={updateVote} />
-            </div>
-        </div>
-    )
-})
+  return (
+    <div>
+      <PostToolbar
+        sortPopular={sortPopular}
+        sortNewest={sortNewest}
+        orderBy={orderBy} />
+      <div className="PostList ">
+        <Posts posts={posts} updateVote={updateVote} />
+      </div>
+    </div>
+  );
+});
+
 PostList.propTypes = {
-    updateVote: PropTypes.func.isRequired,
-    sortPopular: PropTypes.func.isRequired,
-    sortNewest: PropTypes.func.isRequired,
-    orderBy:PropTypes.string.isRequired
+  updateVote: PropTypes.func.isRequired,
+  sortPopular: PropTypes.func.isRequired,
+  sortNewest: PropTypes.func.isRequired,
+  orderBy: PropTypes.string.isRequired
 }
 
 

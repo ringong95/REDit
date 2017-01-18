@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Categories from './../Categories';
 import styles from './styles.css'
-
+import store from './../../store/createStore'
 
 class App extends Component {
   render() {
