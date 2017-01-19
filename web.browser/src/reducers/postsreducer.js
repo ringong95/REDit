@@ -21,6 +21,7 @@ export const sortNewest = () => ({
   type: SORT_NEWEST,
   payload: {},
 });
+
 function getInitialPostList() {
   if (localStorage.getItem('postList')) {
     const newPostList = JSON.parse(localStorage.getItem('postList'));
@@ -42,6 +43,7 @@ export const reducer = (postList = initialPostList, action) => {
   } else {
     newPostList = postList;
   }
+
   switch (action.type) {
     case VOTE_UP:
       // return postList.map((post) => {
@@ -52,6 +54,7 @@ export const reducer = (postList = initialPostList, action) => {
         };
       });
     case SORT_POPULAR:
+      console.log("hey");
       return (postList.slice().sort((a, b) => b.votes - a.votes));
     case SORT_NEWEST:
       //                        spreading also works.
