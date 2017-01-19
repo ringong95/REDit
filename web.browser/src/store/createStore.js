@@ -24,9 +24,9 @@ const store = createStore(
     applyMiddleware(logger),
 );
 
-store.dispatch(voteUp('0'));
-store.dispatch(sortPopular('0'));
-store.dispatch(sortNewest('0'));
+// store.dispatch(voteUp('0'));
+// store.dispatch(sortPopular('0'));
+// store.dispatch(sortNewest('0'));
 
 
 export default store;

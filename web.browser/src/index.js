@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import store from '../src/store/createStore';
 import App from './containers/App';
 import MainLayout from './layouts/MainLayout';
-import Welcome from './containers/Welcome'
-import Login from './containers/Login'
+import Welcome from './containers/Welcome';
+import Login from './containers/Login';
 import CreatePost from './containers/CreatePost';
-import PostList from './containers/PostList'
+import PostList from './containers/PostList';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muiTheme from './styles/mui-theme';
 import './styles/index.css';
 
-import {
-  Router,
-  Route,
-  Link,
-  IndexRoute,
-    browserHistory
-} from 'react-router';
 
 
 // Needed for onTouchTap (Material UI)
@@ -29,18 +24,20 @@ injectTapEventPlugin();
 ReactDOM.render(
 
   <MuiThemeProvider muiTheme={muiTheme}>
-    <Router history={  browserHistory}>
-      <Route component={MainLayout}>
-        <Route  path="/" component={App}>
-          <IndexRoute path="/" component={Welcome} />
-          <Route path="/login" component={Login} />
-          <Route path="/posts">
-					<Route path="new" component={CreatePost} />
-					<Route path=":name" component={PostList} />
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route component={MainLayout}>
+          <Route path="/" component={App}>
+            <IndexRoute path="/" component={Welcome} />
+            <Route path="/login" component={Login} />
+            <Route path="/posts">
+              <Route path="new" component={CreatePost} />
+              <Route path=":name" component={PostList} />
+            </Route>
           </Route>
         </Route>
-      </Route>
-    </Router>
+      </Router>
+    </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')
 );

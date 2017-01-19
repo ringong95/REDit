@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Post from './../../components/Post'
-import PostList from './PostList'
-import { data } from './../../mock-data'
+import { connect } from 'react-redux';
+import PostList from './PostList';
+import { data } from './../../mock-data';
+import { voteUp } from './../../reducers/postsreducer';
 
 // for css make an object with the css in it and just add to where you need it.
 class PostListContainer extends Component {
   constructor() {
     super();
     this.state = {
-      posts: data.posts,
       orderBy: '',
     };
     this.updateVote = this.updateVote.bind(this);
@@ -29,27 +29,25 @@ class PostListContainer extends Component {
     this.setState({
       posts: descending,
       orderBy: 'popular',
-    })
+    });
   }
   sortNewest() {
     const ascending = (this.state.posts.sort((a, b) => parseInt(a.id) - parseInt(b.id)));
     this.setState({
       posts: ascending,
       orderBy: 'newest',
-    })
+    });
   }
   updateVote(post) {
-
     const newposts = this.state.posts.map(((datapost) => {
       if (datapost.id === post.id) {
-        datapost.votes += 1
+        datapost.votes += 1;
       }
       return datapost;
-    }))
-    this.setState({ post: newposts })
+    }));
+    this.setState({ post: newposts });
   }
   componentWillReceiveProps(nextProps) {
-
     if (nextProps.location.query.sort !== this.props.location.query.sort) {
       switch (nextProps.location.query.sort) {
         case 'newest':
@@ -57,7 +55,7 @@ class PostListContainer extends Component {
           this.setState({ orderBy: 'newest' });
           break;
         case 'popular':
-          this.sortPopular()
+          this.sortPopular();
           this.setState({ orderBy: 'popular' });
           break;
         default:
@@ -66,16 +64,27 @@ class PostListContainer extends Component {
     }
   }
   render() {
+     console.log(this.props.postList)
     return (
       <PostList
-        updateVote={this.updateVote}
+        updateVote={this.props.updateVote}
         sortNewest={this.sortNewest}
         sortPopular={this.sortPopular}
         orderBy={this.state.orderBy}
-        posts={this.state.posts}
-        />
-    )
+        posts={this.props.postList}
+      />
+    );
   }
 }
 
-export default PostListContainer;
+const mapDispatchToProps = dispatch => ({
+  updateVote: post => dispatch(voteUp(post.id)),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    postList: state.postsList,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer);

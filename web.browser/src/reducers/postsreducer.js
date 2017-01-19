@@ -25,13 +25,12 @@ function getInitialPostList() {
   if (localStorage.getItem('postList')) {
     const newPostList = JSON.parse(localStorage.getItem('postList'));
     return newPostList.postsList;
-  } else {
+  } else { // eslint-disable-line
     return data.posts;
   }
 }
 
 const initialPostList = getInitialPostList();
-console.log(initialPostList);
 deepFreeze(initialPostList);
 
 export const reducer = (postList = initialPostList, action) => {

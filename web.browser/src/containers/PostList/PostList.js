@@ -21,7 +21,7 @@ PostList.propTypes = {
   updateVote: PropTypes.func.isRequired,
   sortPopular: PropTypes.func.isRequired,
   sortNewest: PropTypes.func.isRequired,
-  orderBy: PropTypes.string.isRequired
+  orderBy: PropTypes.string.isRequired,
 }
 
 
