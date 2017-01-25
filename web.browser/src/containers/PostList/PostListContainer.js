@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PostList from './PostList';
-import { data } from './../../mock-data';
-import { voteUp, sortPopular, sortNewest } from './../../reducers/postsreducer';
+// import { data } from './../../mock-data';
+import { voteUp } from './../../actions/voteUp';
+import { sortNewest } from './../../actions/sortNewest';
+import { sortPopular } from './../../actions/sortPopular';
 
 // for css make an object with the css in it and just add to where you need it.
 class PostListContainer extends Component {
@@ -12,15 +14,8 @@ class PostListContainer extends Component {
       orderBy: '',
     };
     // this.sortPopular = this.sortPopular.bind(this);
+    // this.updateVote = this.updateVote.bind(this);
     // this.sortNewest = this.sortNewest.bind(this);
-  }
-  getPosts() {
-    const retrievedPosts = data.posts;
-    const sortPosts = this.sortNewest(retrievedPosts);
-    this.setState({ posts: sortPosts });
-  }
-  componentdidMount() {
-    this.getPosts();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,8 +33,18 @@ class PostListContainer extends Component {
           return null;
       }
     }
+    return nextProps;
   }
+  getPosts() {
+    const sortPosts = this.props.dispatch(sortNewest("nothing"))
+    this.setState({ posts: sortPosts });
+  }
+  componentdidMount() {
+    this.getPosts();
+  }
+
   render() {
+    console.log(this.props.postList)
     return (
       <PostList
         updateVote={this.props.updateVote}
@@ -55,13 +60,21 @@ class PostListContainer extends Component {
 const mapDispatchToProps = dispatch => ({
   updateVote: post => dispatch(voteUp(post.id)),
   sortPopular: nothing => dispatch(sortPopular(nothing)),
-  sortNewest: nothing => dispatch(sortNewest()),
+  sortNewest: nothing => dispatch(sortNewest(nothing)),
 });
 
 const mapStateToProps = (state) => {
   return {
-    postList: state.postsList,
+    postList: state.posts,
   };
+};
+
+PostListContainer.propTypes = {
+  updateVote: PropTypes.func.isRequired,
+  sortPopular: PropTypes.func.isRequired,
+  sortNewest: PropTypes.func.isRequired,
+  postList: PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  location: PropTypes.object.isRequired, //eslint-disable-line
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer);

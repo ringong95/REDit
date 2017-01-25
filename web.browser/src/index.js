@@ -2,23 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import store from '../src/store/createStore';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import storeFactory from '../src/store/createStore';
 import App from './containers/App';
 import MainLayout from './layouts/MainLayout';
 import Welcome from './containers/Welcome';
 import Login from './containers/Login';
+import { data } from './mock-data';
 import CreatePost from './containers/CreatePost';
 import PostList from './containers/PostList';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muiTheme from './styles/mui-theme';
 import './styles/index.css';
 
 
+const initialState = {
+  weeks: [...data.weeks],
+  posts: [...data.posts],
+  postFilter: 'React',
+};
 
+const store = storeFactory(initialState);
 // Needed for onTouchTap (Material UI)
 // http://stackoverflow.com/a/34015469/988941
-import injectTapEventPlugin from 'react-tap-event-plugin';
+
 injectTapEventPlugin();
 
 ReactDOM.render(

@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
-import Week from './../../components/Week'
-import Categories from './Categories'
+import { connect } from 'react-redux';
+import Categories from './Categories';
+import displayFilter from './../../actions/displayFiltered';
 
-import { data } from './../../mock-data'
-
-
-
-class CategoriesContainer extends Component { 
-  constructor(){
-    super()
-    this.state = {
-      weeks: data.weeks,
-
-    }
-
-  }
+class CategoriesContainer extends Component {
   render() {
-    const drawerStyle ={
-    height: "90%",
-    top: "10%",
-    width: "200px"
-  }
+    const drawerStyle = {
+      height: '90%',
+      top: '10%',
+      width: '200px',
+    };
     return (
-      <Categories drawerStyle={drawerStyle} 
-                  weeks={this.state.weeks}/>
+      <Categories
+        drawerStyle={drawerStyle}
+        weeks={this.props.weeks}
+        displayFilter={this.props.displayFilter}
+        />
     );
   }
 }
-export default CategoriesContainer;
+
+const mapDispatchToProps = dispatch => ({
+  displayFilter: category => dispatch(displayFilter(category)),
+});
+
+const mapStateToProps = state => ({
+  weeks: state.weeks,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer); 
+
