@@ -19,10 +19,9 @@ const HeaderBar = (() => {
           <FlatButton label="Share a New Link" />
           <FlatButton label="LogOut" />
         </div>}
-      />
+    />
   );
-}
-);
+});
 
 
 export default HeaderBar;

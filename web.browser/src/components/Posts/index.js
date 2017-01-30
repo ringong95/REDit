@@ -14,7 +14,7 @@ const Posts = ({ posts, updateVote, postFilter }) => {
         description={post.description}
         link={post.link}
         updateVote={updateVote}
-        post={post}
+        postsLink={post}
         />
     ));
 

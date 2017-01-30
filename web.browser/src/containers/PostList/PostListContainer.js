@@ -5,6 +5,7 @@ import PostList from './PostList';
 import { voteUp } from './../../actions/voteUp';
 import { sortNewest } from './../../actions/sortNewest';
 import { sortPopular } from './../../actions/sortPopular';
+import { fetchPosts } from './../../actions/fetchActions';
 
 // for css make an object with the css in it and just add to where you need it.
 class PostListContainer extends Component {
@@ -16,6 +17,9 @@ class PostListContainer extends Component {
     // this.sortPopular = this.sortPopular.bind(this);
     // this.updateVote = this.updateVote.bind(this);
     // this.sortNewest = this.sortNewest.bind(this);
+  }
+  componentDidMount() {
+    this.props.fetchingPosts('nothing');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,7 +48,6 @@ class PostListContainer extends Component {
   }
 
   render() {
-    console.log(this.props.postList)
     return (
       <PostList
         updateVote={this.props.updateVote}
@@ -52,7 +55,7 @@ class PostListContainer extends Component {
         sortPopular={this.props.sortPopular}
         orderBy={this.state.orderBy}
         posts={this.props.postList}
-      />
+        />
     );
   }
 }
@@ -61,6 +64,7 @@ const mapDispatchToProps = dispatch => ({
   updateVote: post => dispatch(voteUp(post.id)),
   sortPopular: nothing => dispatch(sortPopular(nothing)),
   sortNewest: nothing => dispatch(sortNewest(nothing)),
+  fetchingPosts: nothing => dispatch(fetchPosts(nothing)),
 });
 
 const mapStateToProps = (state) => {

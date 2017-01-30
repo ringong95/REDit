@@ -7,7 +7,7 @@ import styles from './styles.css';
 import { voteUp } from './../../actions/voteUp';
 
 // Card flatbutton and chips
-const Post = (({ author, votes = 0, categories, title, description, link, updateVote, post }) => (
+const Post = (({ votes = 0, categories, title, description, postlink, updateVote, post }) => (
   <Card className={styles.post}>
     <a href="{link}"> {title} </a>
     <p> {description} </p>

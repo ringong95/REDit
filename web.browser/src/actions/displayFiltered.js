@@ -1,5 +1,5 @@
-const DISPLAY_FILTER = 'DISPLAY_FILTER';
+const SET_DISPLAY_FILTER = 'SET_DISPLAY_FILTER';
 export const displayFilter = category => ({
-  type: DISPLAY_FILTER,
+  type: SET_DISPLAY_FILTER,
   payload: { category },
 });

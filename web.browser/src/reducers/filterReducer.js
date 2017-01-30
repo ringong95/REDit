@@ -1,6 +1,6 @@
 const filterReducer = (state = '', action) => {
   switch (action.type) {
-    case 'DISPLAY_FILTER':
+    case 'SET_DISPLAY_FILTER':
       return action.payload.category;
     default:
       return state;

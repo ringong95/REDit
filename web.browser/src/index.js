@@ -19,7 +19,7 @@ import './styles/index.css';
 
 const initialState = {
   weeks: [...data.weeks],
-  posts: [...data.posts],
+  posts: [],
   postFilter: 'React',
 };
 
@@ -47,6 +47,5 @@ ReactDOM.render(
       </Router>
     </Provider>
   </MuiThemeProvider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-// 

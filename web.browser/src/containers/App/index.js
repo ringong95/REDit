@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import Categories from './../Categories';
-import styles from './styles.css'
-import store from './../../store/createStore'
+import styles from './styles.css';
+
 
 class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-      <Categories/>
+        <Categories />
         {this.props.children}
       </div>
     );
@@ -15,7 +15,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.object, //eslint-disable-line 
 };
 
 export default App;

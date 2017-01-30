@@ -19,6 +19,7 @@ const Week = (({ title, categories, displayFilter }) => {
     </div>
   );
 });
+
 Week.propTypes = {
   title: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired,
