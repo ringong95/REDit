@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import styles from "./styles.css";
 import PostToolbar from './../../components/PostToolbar';
 import Posts from './../../components/Posts';
-const PostList = (({ updateVote, sortNewest, sortPopular, orderBy, posts }) => {
+const PostList = (({ updateVote, sortNewest, sortPopular, orderBy, posts, dispatch }) => {
   return (
     <div>
       <PostToolbar
@@ -12,7 +12,11 @@ const PostList = (({ updateVote, sortNewest, sortPopular, orderBy, posts }) => {
         orderBy={orderBy}
       />
       <div className="PostList ">
-        <Posts posts={posts} updateVote={updateVote} />
+        <Posts 
+          posts={posts}
+          updateVote={updateVote}
+          dispatch={dispatch}
+        />
       </div>
     </div>
   );

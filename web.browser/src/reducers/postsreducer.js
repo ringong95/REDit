@@ -1,7 +1,6 @@
 
 import { VOTE_UP } from './../actions/voteUp';
 import { SORT_POPULAR, SORT_NEWEST } from './../actions/sortingActions';
-
 import { LOADPOSTS } from './../actions/fetchActions';
 
 export default (postList = [], action) => {
@@ -9,7 +8,7 @@ export default (postList = [], action) => {
     case LOADPOSTS:
       return action.payload;
     case VOTE_UP:
-      console.log(action.payload);
+      console.log(action);
       return postList.map((post) => {
         if (post.id !== action.payload.post.id) return post;
         return {
