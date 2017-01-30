@@ -1,6 +1,7 @@
+import { LOADWEEKS } from './../actions/fetchActions';
+
 const weeksIntialState = {};
 // const LOADCATEGORIES = 'LOADCATEGORIES';
-const LOADWEEKS = 'LOADWEEKS';
 
 export default (state = weeksIntialState, action) => {
   switch (action.type) {

@@ -25,8 +25,14 @@ const Posts = ({ posts, updateVote, postFilter }) => {
   );
 };
 
+Posts.propTypes = {
+  author: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired,
+  link: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired, //eslint-disable-line
+};
 const mapStateToProps = state => ({
   postFilter: state.postFilter,
 });
 
-export default connect(mapStateToProps)(Posts); 
+export default connect(mapStateToProps)(Posts);

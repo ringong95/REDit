@@ -1,19 +1,16 @@
 
-const VOTE_UP = 'VOTE_UP';
+import { VOTE_UP } from './../actions/voteUp';
+import { SORT_POPULAR, SORT_NEWEST } from './../actions/sortingActions';
 
-const SORT_POPULAR = 'SORT_POPULAR';
-const SORT_NEWEST = 'SORT_NEWEST';
-const LOADPOSTS = 'LOADPOSTS';
+import { LOADPOSTS } from './../actions/fetchActions';
 
 export default (postList = [], action) => {
   switch (action.type) {
     case LOADPOSTS:
-      console.log(action.payload);
       return action.payload;
     case VOTE_UP:
+      console.log(action.payload);
       return postList.map((post) => {
-        console.log(post.id);
-        console.log(action.payload.post.id);
         if (post.id !== action.payload.post.id) return post;
         return {
           ...post, votes: post.votes + 1,

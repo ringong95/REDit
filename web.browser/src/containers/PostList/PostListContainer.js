@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PostList from './PostList';
 // import { data } from './../../mock-data';
 import { voteUp } from './../../actions/voteUp';
-import { sortNewest } from './../../actions/sortNewest';
-import { sortPopular } from './../../actions/sortPopular';
+import { sortNewest, sortPopular } from './../../actions/sortingActions';
+
 import { fetchPosts } from './../../actions/fetchActions';
 
 // for css make an object with the css in it and just add to where you need it.
@@ -40,7 +40,7 @@ class PostListContainer extends Component {
     return nextProps;
   }
   getPosts() {
-    const sortPosts = this.props.dispatch(sortNewest("nothing"))
+    const sortPosts = this.props.dispatch(sortNewest('nothing'));
     this.setState({ posts: sortPosts });
   }
   componentdidMount() {
@@ -55,13 +55,13 @@ class PostListContainer extends Component {
         sortPopular={this.props.sortPopular}
         orderBy={this.state.orderBy}
         posts={this.props.postList}
-        />
+      />
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateVote: post => dispatch(voteUp(post.id)),
+  updateVote: post => dispatch(voteUp(post)),
   sortPopular: nothing => dispatch(sortPopular(nothing)),
   sortNewest: nothing => dispatch(sortNewest(nothing)),
   fetchingPosts: nothing => dispatch(fetchPosts(nothing)),

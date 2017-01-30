@@ -11,7 +11,7 @@ const Post = (({ votes = 0, categories, title, description, postlink, updateVote
   <Card className={styles.post}>
     <a href="{link}"> {title} </a>
     <p> {description} </p>
-    <FlatButton onClick={() => { updateVote(post); }} label={votes ? `vote ${votes}` : 'vote 0 '} />
+    <FlatButton onClick={updateVote} label={votes ? `vote ${votes}` : 'vote 0 '} />
     {categories.map((category) => (
       <Chip> {category} </Chip>
     ))
@@ -19,6 +19,8 @@ const Post = (({ votes = 0, categories, title, description, postlink, updateVote
 
   </Card>
 ));
+
+
 Post.propTypes = {
   author: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
@@ -30,12 +32,4 @@ Post.propTypes = {
 
 
 
-const mapDispatchToProps = dispatch => ({
-  updateVote: post => dispatch(voteUp(post)),
-});
-
-const mapStateToProps = state => (
-  state
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Post); 
+export default Post;

@@ -4,7 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { connect } from 'react-redux';
 import { displayFilter } from '../../actions/displayFiltered';
 
-const Week = (({ title, categories, displayFilter }) => {
+const Week = (({ title, categories }) => {
   const drawerStyle = {
     textAlign: 'center',
   };
@@ -23,7 +23,6 @@ const Week = (({ title, categories, displayFilter }) => {
 Week.propTypes = {
   title: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired,
-  applyFilter: PropTypes.func.isRequired,
 };
 
 

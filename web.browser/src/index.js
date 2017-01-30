@@ -10,7 +10,6 @@ import App from './containers/App';
 import MainLayout from './layouts/MainLayout';
 import Welcome from './containers/Welcome';
 import Login from './containers/Login';
-import { data } from './mock-data';
 import CreatePost from './containers/CreatePost';
 import PostList from './containers/PostList';
 import muiTheme from './styles/mui-theme';
@@ -18,7 +17,7 @@ import './styles/index.css';
 
 
 const initialState = {
-  weeks: [...data.weeks],
+  weeks: [],
   posts: [],
   postFilter: 'React',
 };
@@ -36,7 +35,7 @@ ReactDOM.render(
       <Router history={browserHistory}>
         <Route component={MainLayout}>
           <Route path="/" component={App}>
-            <IndexRoute path="/" component={Welcome} />
+            <IndexRoute component={Welcome} />
             <Route path="/login" component={Login} />
             <Route path="/posts">
               <Route path="new" component={CreatePost} />
