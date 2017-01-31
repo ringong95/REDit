@@ -7,11 +7,11 @@ import { voteUp } from './../../actions/voteUp';
 
 
 // Card flatbutton and chips
-const Post = (({ votes = 0, categories, title, description, postlink, updateVote, post, dispatch }) => (
+const Post = (({ votes = 0, categories, title, description, postlink, updateVote, post }) => (
   <Card className={styles.post}>
     <a href="{link}"> {title} </a>
     <p> {description} </p>
-    <FlatButton onClick={() => { dispatch(voteUp(post))} } label={votes ? `vote ${votes}` : 'vote 0 '} />
+    <FlatButton onClick={() => { updateVote(post) } } label={votes ? `vote ${votes}` : 'vote 0 '} />
     {categories.map((category) => (
       <Chip> {category} </Chip>
     ))

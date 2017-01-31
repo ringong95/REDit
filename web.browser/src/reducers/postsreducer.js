@@ -8,7 +8,6 @@ export default (postList = [], action) => {
     case LOADPOSTS:
       return action.payload;
     case VOTE_UP:
-      console.log(action);
       return postList.map((post) => {
         if (post.id !== action.payload.post.id) return post;
         return {
