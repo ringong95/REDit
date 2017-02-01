@@ -12,14 +12,14 @@ class Gandalf extends React.Component {
       required: 'This field is required',
       numeric: 'This value must be a number',
       email: 'This value must an email address',
-      url: 'What',
+      url: 'This url must be a link',
     };
 
     this.validators = {
       required: v => !!v,
       numeric: v => !isNaN(v),
       email: v => /.+@.+\..+/.test(v),
-      url: v => /\S[A-Z].+\.+\S./.test(v),
+      url: v => /http+.+\/\/+.?.*/.test(v),
     };
   }
 
