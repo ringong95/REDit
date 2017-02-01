@@ -1,8 +1,15 @@
-const express = require('express');
-const server = express();
+import express from 'express'
+import { resolve } from 'path'
 
-const PORT = 8000;
+import fallback from 'express-history-api-fallback';
 
-server.listen(PORT, () => {
-  console.log('express Server Listening Man, On:', PORT);
-});
+import config from '../config'
+
+const root = resolve(process.cwd(), config.get('STATIC_PATH'));
+const app = express();
+
+app.use(express.static(root));
+
+app.use(fallback('index.html', { root }));
+
+module.exports = app;
