@@ -1,12 +1,16 @@
 const nconf = require('nconf');
-const config = module.exports = nconf.argv()
+export const config = nconf
 
-.env([
-  'APP_SECRET',
-  'STATIC_PATH'
-])
-
-.defaults({
-  'STATIC_PATH': '../web.browser/build',
-  'HTTPS': (process.env.NODE_ENV === 'production')
-})
+  .env([
+    'APP_SECRET',
+    'STATIC_PATH',
+    'POSTGRESHOST',
+    'POSTGRESUSER',
+    'POSTGRESPASSWORD',
+    'POSTGRESDBNAME',
+  ])
+  .argv()
+  .defaults({
+    'STATIC_PATH': '../web.browser/build',
+    'HTTPS': (process.env.NODE_ENV === 'production')
+  })
