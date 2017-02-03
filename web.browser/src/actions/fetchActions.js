@@ -20,21 +20,39 @@ export function loadWeeks(items) {
     payload: items,
   };
 }
+const postRequest = {
+  method: 'POST',
+  credentials: 'same-origin',
+  headers: { 'Content-Type': 'application/json; charset=utf-8' },
+};
+const getRequest = {
+  method: "GET",
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Cache': 'no-cache',
+  },
+  credentials: 'include',
+};
+
 export const fetchPosts = nothing => (dispatch) => {
-  fetch('http://localhost:8000/posts', {})
+  fetch('http://localhost:8000/api/posts/5', getRequest)
     .then(response => response.json())
     .then(json => dispatch(loadPosts(json)));
 };
 
 export const fetchCategories = nothing => (dispatch) => {
-  fetch('http://localhost:8000/categories', {})
+  fetch('http://localhost:8000/api/categories', getRequest)
     .then(response => response.json())
     .then(json => dispatch(loadCategories(json)));
 };
 
 export const fetchWeeks = nothing => (dispatch) => {
-  fetch('http://localhost:8000/weeks', {})
+  fetch('http://localhost:8000/api/weeks', getRequest)
     .then(response => response.json())
     .then(json => dispatch(loadWeeks(json)));
 };
 
+
+
+// credentials: 'same-origin'

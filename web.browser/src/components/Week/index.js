@@ -14,7 +14,12 @@ const Week = (({ title, categories }) => {
       <h3 style={drawerStyle}> {title} </h3>
       <Divider />
       {categories.map(category => (
-        <MenuItem onTouchTap={() => { displayFilter(category); } }> {category} </MenuItem>
+        <MenuItem 
+          key={category.id} 
+          onTouchTap={() => { displayFilter(category.categorytitle); }}
+        > 
+          {category.categorytitle}
+        </MenuItem>
       ))}
     </div>
   );

@@ -18,13 +18,13 @@ const PostToolbar = ({ sortNewest, sortPopular, orderBy }) => {
             <h2> Posts </h2>
             <ToolbarGroup className={styles.sorting}>
                 <Link to={`${location.pathname}?sort=popular`} style={flatbuttonCSS}>
-                    <FlatButton 
+                    <FlatButton
                         label="Popular"
                         style={flatbuttonCSS}
                         backgroundColor={orderBy == "popular" ? "#ffffff" : "rgb(232, 232, 232)"} />
                 </Link>
-                 <Link to={`${location.pathname}?sort=newest`} style={flatbuttonCSS}>
-                     <FlatButton 
+                <Link to={`${location.pathname}?sort=newest`} style={flatbuttonCSS}>
+                    <FlatButton
                         label="Newest"
                         style={flatbuttonCSS}
                         backgroundColor={orderBy == "newest" ? "#ffffff" : "rgb(232, 232, 232)"} />

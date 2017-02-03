@@ -2,7 +2,7 @@ const nconf = require('nconf');
 export const config = nconf
 
   .env([
-    'APP_SECRET',
+    'PATH',
     'STATIC_PATH',
     'POSTGRESHOST',
     'POSTGRESUSER',
