@@ -50,27 +50,24 @@ export default function AuthRoutes(router) {
   // encrypt the fuck out of it
   // send it back to the user
   router.post('/login', (req, res) => {
+    console.log(req.body)
     const { email, password } = req.body.login;
 
     database.query('select * from users where email = $1;', [email])
       .then((response) => {
+        console.log(response.rows[0])
         if (bcrypt.compareSync(password, response.rows[0].password)) {
           const sessionUser = { email: email }
           const JWT = jwt.sign(sessionUser, config.get('PATH'))
-          console.log(res.cookie(SESSION_COOKIE, JWT, {
-            secure: config.get('HTTPS'),
-            maxAge: 7200000,
-            httpOnly: true
-          }))
           res.status(200).cookie(SESSION_COOKIE, JWT, {
             secure: config.get('HTTPS'),
             maxAge: 7200000,
             httpOnly: true
           }).json("hello")
+          console.log("work?")
         }
-      })
-      .then((response) => {
-
+      }).catch((err)=>{
+        res.json(err)
       })
   })
 

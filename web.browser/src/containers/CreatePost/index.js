@@ -1,7 +1,9 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
 import FlatButton from 'material-ui/FlatButton';
 import Gandalf from './../../lib/gandalf/gandalf';
+import { submitPost } from './../../actions/fetchActions';
 
 class CreatePost extends Gandalf {
   constructor() {
@@ -55,6 +57,8 @@ class CreatePost extends Gandalf {
 
     if (!data) return null;
     console.log(data);
+    this.props.submitingPost(data);
+    return null;
     // Math
   }
 
@@ -62,7 +66,7 @@ class CreatePost extends Gandalf {
     const fields = this.state.fields;
 
     return (
-      <form>
+      <form >
         <h1>My Form</h1>
         {fields.postTitle.element} <br />
         {fields.author.element} <br />
@@ -75,4 +79,14 @@ class CreatePost extends Gandalf {
   }
 }
 
-export default CreatePost;
+const mapDispatchToProps = dispatch => ({
+  submitingPost: data => dispatch(submitPost(data)),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);
