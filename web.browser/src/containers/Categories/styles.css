@@ -1,0 +1,7 @@
+.sideCategories{
+    position: fixed;
+    top: 50px;
+    left: 0px;
+    height: 100%;
+    overflow: scroll;
+}
