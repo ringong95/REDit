@@ -7,13 +7,22 @@ import { voteUp } from './../../actions/voteUp';
 
 
 // Card flatbutton and chips
+<<<<<<< HEAD
 const Post = (({ votes = 0, categories, title, description, postlink, updateVote, post }) => (
+=======
+const Post = (({ votes = 0, categories, title, description, postlink, updateVote, post, tags }) => (
+>>>>>>> postgres
   <Card className={styles.post}>
     <a href="{link}"> {title} </a>
     <p> {description} </p>
     <FlatButton onClick={() => { updateVote(post) } } label={votes ? `vote ${votes}` : 'vote 0 '} />
+<<<<<<< HEAD
     {categories.map((category) => (
       <Chip> {category} </Chip>
+=======
+    {tags.map((tag) => (
+      <Chip> {tag} </Chip>
+>>>>>>> postgres
     ))
     }
 

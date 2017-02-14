@@ -19,7 +19,7 @@ import './styles/index.css';
 const initialState = {
   weeks: [],
   posts: [],
-  postFilter: 'React',
+  postFilter: 'This is a medicore category name',
 };
 
 const store = storeFactory(initialState);

@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import Post from './../Post';
 
 const Posts = ({ posts, updateVote, postFilter }) => {
+<<<<<<< HEAD
+=======
+  console.log(posts);
+>>>>>>> postgres
   const content = posts.filter((post) => (post.categories.includes(postFilter)))
     .map(post => (
       <Post
@@ -14,6 +18,7 @@ const Posts = ({ posts, updateVote, postFilter }) => {
         description={post.description}
         link={post.link}
         updateVote={updateVote}
+        tags={post.tags}
         post={post}
         />
     ));
