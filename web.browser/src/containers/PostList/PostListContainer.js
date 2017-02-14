@@ -55,7 +55,6 @@ class PostListContainer extends Component {
         sortPopular={this.props.sortPopular}
         orderBy={this.state.orderBy}
         posts={this.props.postList}
-        dispatch={this.props.dispatch}
       />
     );
   }

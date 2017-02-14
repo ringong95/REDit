@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Post from './../Post';
 
-const Posts = ({ posts, updateVote, postFilter, dispatch }) => {
+const Posts = ({ posts, updateVote, postFilter }) => {
   const content = posts.filter((post) => (post.categories.includes(postFilter)))
     .map(post => (
       <Post
@@ -15,7 +15,6 @@ const Posts = ({ posts, updateVote, postFilter, dispatch }) => {
         link={post.link}
         updateVote={updateVote}
         post={post}
-        dispatch={dispatch}
         />
     ));
 

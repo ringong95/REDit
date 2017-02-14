@@ -2,6 +2,7 @@
 npm-debug.log
 
 server/node_modules
+server/src/node_modules
 
 web.browser/node_modules
 web.browser/build
