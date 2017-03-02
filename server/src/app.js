@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-const express = require('express');
-const server = express();
-
-const PORT = 8000;
-
-server.listen(PORT, () => {
-  console.log('express Server Listening Man, On:', PORT);
-});
-=======
 import express from 'express'
 import { resolve } from 'path'
 import fallback from 'express-history-api-fallback';
@@ -36,4 +26,3 @@ app.use(express.static(root));
 app.use(fallback('index.html', { root }));
 
 module.exports = app;
->>>>>>> postgres

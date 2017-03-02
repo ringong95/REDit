@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import Post from './../Post';
 
 const Posts = ({ posts, updateVote, postFilter }) => {
-<<<<<<< HEAD
-=======
-  console.log(posts);
->>>>>>> postgres
+  console.log(posts)
   const content = posts.filter((post) => (post.categories.includes(postFilter)))
     .map(post => (
       <Post

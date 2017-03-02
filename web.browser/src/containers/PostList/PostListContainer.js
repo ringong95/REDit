@@ -14,9 +14,6 @@ class PostListContainer extends Component {
     this.state = {
       orderBy: '',
     };
-    // this.sortPopular = this.sortPopular.bind(this);
-    // this.updateVote = this.updateVote.bind(this);
-    // this.sortNewest = this.sortNewest.bind(this);
   }
   componentDidMount() {
     this.props.fetchingPosts('nothing');

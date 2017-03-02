@@ -20,11 +20,6 @@ export function loadWeeks(items) {
     payload: items,
   };
 }
-const postRequest = {
-  method: 'POST',
-  credentials: 'same-origin',
-  headers: { 'Content-Type': 'application/json; charset=utf-8' },
-};
 const getRequest = {
   method: 'GET',
   headers: {
@@ -43,9 +38,9 @@ export function submitPost(data) {
     body: {
       posts: {
         title: data.posttitle,
-        'link': data.link,
+        link: data.link,
         description: data.description,
-        'category': data.category,
+        category: data.category,
       },
     },
   })
@@ -54,7 +49,7 @@ export function submitPost(data) {
 }
 
 
-export const fetchPosts = nothing => (dispatch) => {
+export const fetchPosts = () => (dispatch) => {
   fetch('http://localhost:8000/api/posts/5', getRequest)
     .then(response => response.json())
     .then(json => dispatch(loadPosts(json)));
@@ -84,8 +79,8 @@ export const logIn = (data) => {
   console.log(jsonBody);
   fetch('http://localhost:8000/auth/login', {
     method: 'POST',
-    credentials: 'same-origin',
-    headers: { "Content-Type": 'application/json; charset=utf-8' },
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
     body: jsonBody,
   });
 };

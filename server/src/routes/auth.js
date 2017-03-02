@@ -55,7 +55,7 @@ export default function AuthRoutes(router) {
 
     database.query('select * from users where email = $1;', [email])
       .then((response) => {
-        console.log(response.rows[0])
+        // console.log(response.rows[0])
         if (bcrypt.compareSync(password, response.rows[0].password)) {
           const sessionUser = { email: email }
           const JWT = jwt.sign(sessionUser, config.get('PATH'))
@@ -73,7 +73,7 @@ export default function AuthRoutes(router) {
 
   router.post('/logout', () => {
     if (req.cookie.token) {
-      // res.clearCookie(SESSION_COOKIE);
+      res.clearCookie(SESSION_COOKIE);
     }
     res.status(200).json({ success: "GOOD BYE" })
   })
