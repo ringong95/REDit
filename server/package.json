@@ -17,7 +17,7 @@
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-history-api-fallback": "^2.1.0",
-    "jsonwebtoken": "^7.2.1",
+    "jsonwebtoken": "^9.0.0",
     "nconf": "^0.8.4",
     "pg": "^6.1.2"
   },
